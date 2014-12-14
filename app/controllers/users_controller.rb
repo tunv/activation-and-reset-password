@@ -28,7 +28,6 @@ before_action :admin_user,     only: :destroy
   end
 
   def edit
-  
   end
 
  def update
