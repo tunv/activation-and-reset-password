@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	attr_accessor :remember_token,:activation_token
+	attr_accessor :remember_token,:activation_token, :reset_token,:reset_sent_at
 	before_save   :downcase_email
   before_create :create_activation_digest
 
@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
 
   # Sends password reset email.
   def send_password_reset_email
-    UserMailer.password_reset(self).deliver_now
+    UserMailer.password_reset(self)
   end
  # Returns true if a password reset has expired.
   def password_reset_expired?
